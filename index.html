@@ -125,8 +125,8 @@
   <div class="footer">18+ · Құпиялылық сақталады · Қазақстан</div>
 
   <script>
-    // Твоя новая ссылка
-    const OFFER_URL = "https://dieebjh.adfllows.com/c/77d601875df99"; 
+    // Твоя основная чистая ссылка (куда идут твои переходы без меток)
+    const DEFAULT_OFFER_URL = "https://dieebjh.adfllows.com/c/77d601875df99"; 
     
     // Аватарки девушек
     document.getElementById('ava1').src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80";
@@ -140,10 +140,17 @@
       if (navigator.vibrate) navigator.vibrate([70, 50, 70]);
     }, 1800);
 
-    // Функция перехода на оффер с сохранением всех UTM-меток и fbclid из Facebook
+    // Умная функция: если зашли по ссылке друга ?sub1=friend, она приклеится к его переходу
     function goOffer() {
-      const params = window.location.search;
-      window.location.href = OFFER_URL + (params ? (OFFER_URL.includes('?') ? '&' : '?') + params.substring(1) : "");
+      const currentParams = window.location.search; // ловит всё, что после знака ?
+      let targetUrl = DEFAULT_OFFER_URL;
+
+      if (currentParams) {
+        // Если в строке есть ?sub1=friend, добавляем это к твоей партнерской ссылке
+        targetUrl += (targetUrl.includes('?') ? '&' : '?') + currentParams.substring(1);
+      }
+
+      window.location.href = targetUrl;
     }
   </script>
 </body>
