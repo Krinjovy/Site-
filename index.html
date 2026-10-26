@@ -1,9 +1,26 @@
+```html
 <!DOCTYPE html>
 <html lang="kk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>WhatsApp Радар — Жақын маңдағы қыз-келіншектер</title>
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1110997361824704');
+  fbq('track', 'PageView');
+  </script>
+  <!-- End Meta Pixel Code -->
+
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
     body { background: #111b21; color: #e9edef; min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 16px 14px; }
@@ -53,6 +70,9 @@
   </style>
 </head>
 <body>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1110997361824704&ev=PageView&noscript=1"
+  alt="" /></noscript>
 
   <div class="top-bar">
     <div class="dot-live"></div>
@@ -87,7 +107,7 @@
         <div class="card-phone">📞 +7 (707) ***-**-42</div>
         <div class="card-status">💬 «Жалғыз өзім тұрамын, танысайық...»</div>
       </div>
-      <button class="card-btn">Жазу 💬</button>
+      <button type="button" class="card-btn" onclick="event.stopPropagation(); goOffer();">Жазу 💬</button>
     </div>
 
     <!-- Анкета 2 (28-35) -->
@@ -101,7 +121,7 @@
         <div class="card-phone">📞 +7 (775) ***-**-19</div>
         <div class="card-status">🎧 Дауыстық хабарлама жіберді (0:07)</div>
       </div>
-      <button class="card-btn">Ашу ▶</button>
+      <button type="button" class="card-btn" onclick="event.stopPropagation(); goOffer();">Ашу ▶</button>
     </div>
 
     <!-- Анкета 3 (45+ Ауыл) -->
@@ -115,7 +135,7 @@
         <div class="card-phone">📞 +7 (701) ***-**-85</div>
         <div class="card-status">💬 «Ауылда тұрамын, шай ішейік...»</div>
       </div>
-      <button class="card-btn">Жазу 💬</button>
+      <button type="button" class="card-btn" onclick="event.stopPropagation(); goOffer();">Жазу 💬</button>
     </div>
 
     <!-- Анкета 4 (45+ Ауыл) -->
@@ -129,7 +149,7 @@
         <div class="card-phone">📞 +7 (702) ***-**-61</div>
         <div class="card-status">💬 «Қарапайым ауыл әйелімін, жаз...»</div>
       </div>
-      <button class="card-btn">Жазу 💬</button>
+      <button type="button" class="card-btn" onclick="event.stopPropagation(); goOffer();">Жазу 💬</button>
     </div>
 
     <!-- Анкета 5 (45+ Ауыл) -->
@@ -143,7 +163,7 @@
         <div class="card-phone">📞 +7 (777) ***-**-34</div>
         <div class="card-status">🎧 Дауыстық хабарлама жіберді (0:11)</div>
       </div>
-      <button class="card-btn">Ашу ▶</button>
+      <button type="button" class="card-btn" onclick="event.stopPropagation(); goOffer();">Ашу ▶</button>
     </div>
 
     <!-- Анкета 6 (45+ Ауыл) -->
@@ -157,7 +177,7 @@
         <div class="card-phone">📞 +7 (705) ***-**-90</div>
         <div class="card-status">💬 «Осы ауданнанмын, маған жазшы 😊»</div>
       </div>
-      <button class="card-btn">Жазу 💬</button>
+      <button type="button" class="card-btn" onclick="event.stopPropagation(); goOffer();">Жазу 💬</button>
     </div>
 
     <!-- Анкета 7 (45+ Ауыл) -->
@@ -171,7 +191,7 @@
         <div class="card-phone">📞 +7 (708) ***-**-12</div>
         <div class="card-status">💬 «Сөзіне берік ер азамат іздеймін...»</div>
       </div>
-      <button class="card-btn">Жазу 💬</button>
+      <button type="button" class="card-btn" onclick="event.stopPropagation(); goOffer();">Жазу 💬</button>
     </div>
 
     <!-- Анкета 8 (45+ Ауыл) -->
@@ -185,10 +205,10 @@
         <div class="card-phone">📞 +7 (747) ***-**-77</div>
         <div class="card-status">💬 «Үй шаруасына пысықпын, сөйлесейік»</div>
       </div>
-      <button class="card-btn">Жазу 💬</button>
+      <button type="button" class="card-btn" onclick="event.stopPropagation(); goOffer();">Жазу 💬</button>
     </div>
 
-    <button class="main-cta" onclick="goOffer()">
+    <button type="button" class="main-cta" onclick="goOffer()">
       🔓 WhatsApp нөмірлерді ашу және жазу
     </button>
   </div>
@@ -209,23 +229,39 @@
     document.getElementById('ava7').src = "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=150&auto=format&fit=crop&q=80";
     document.getElementById('ava8').src = "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=150&auto=format&fit=crop&q=80";
 
-    // 1.8 секундтан кейін радардан анкеталарға өту
+    // 1.8 секундтан кейін радардан анкеталарға өту + ViewContent оқиғасын жіберу
     setTimeout(() => {
       document.getElementById('scannerScreen').style.display = 'none';
       document.getElementById('resultsScreen').style.display = 'flex';
       if (navigator.vibrate) navigator.vibrate([70, 50, 70]);
+      if (typeof fbq === 'function') {
+        fbq('track', 'ViewContent');
+      }
     }, 1800);
 
+    let isRedirecting = false;
+
     function goOffer() {
+      if (isRedirecting) return;
+      isRedirecting = true;
+
       const currentParams = window.location.search;
       let targetUrl = DEFAULT_OFFER_URL;
 
-      if (currentParams) {
+      if (currentParams && currentParams.length > 1) {
         targetUrl += (targetUrl.includes('?') ? '&' : '?') + currentParams.substring(1);
       }
 
-      window.location.href = targetUrl;
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead');
+      }
+
+      // Небольшая пауза 180 мс, чтобы браузер гарантированно успел отправить событие Lead в Meta Pixel перед редиректом
+      setTimeout(() => {
+        window.location.href = targetUrl;
+      }, 180);
     }
   </script>
 </body>
 </html>
+```
