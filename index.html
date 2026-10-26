@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>WhatsApp Радар — Жақын маңдағы қыздар</title>
+  <title>WhatsApp Радар — Жақын маңдағы қыз-келіншектер</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
     body { background: #111b21; color: #e9edef; min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 16px 14px; }
@@ -22,7 +22,7 @@
     .scan-sub { font-size: 14px; color: #8696a0; max-width: 300px; line-height: 1.4; }
 
     /* Экран 2: Найденные номера */
-    #resultsScreen { display: none; width: 100%; max-width: 420px; flex-direction: column; gap: 12px; flex: 1; justify-content: center; margin: 12px 0; }
+    #resultsScreen { display: none; width: 100%; max-width: 420px; flex-direction: column; gap: 10px; flex: 1; justify-content: flex-start; margin: 12px 0; }
     .found-header { text-align: center; margin-bottom: 4px; }
     .found-title { font-size: 18px; font-weight: 700; color: #fff; }
     .found-sub { font-size: 13px; color: #25d366; margin-top: 3px; font-weight: 500; }
@@ -34,8 +34,9 @@
     .card-online { position: absolute; bottom: 2px; right: 2px; width: 13px; height: 13px; background: #25d366; border-radius: 50%; border: 2px solid #202c33; }
     
     .card-body { flex: 1; min-width: 0; }
-    .card-name { font-size: 16px; font-weight: 700; color: #fff; display: flex; align-items: center; justify-content: space-between; }
-    .dist-badge { font-size: 11px; background: rgba(37,211,102,0.15); color: #25d366; padding: 2px 7px; border-radius: 10px; font-weight: 600; }
+    .card-name { font-size: 15px; font-weight: 700; color: #fff; display: flex; align-items: center; justify-content: space-between; gap: 4px; }
+    .ru-badge { font-size: 12px; font-weight: 500; color: #25d366; }
+    .dist-badge { font-size: 11px; background: rgba(37,211,102,0.15); color: #25d366; padding: 2px 7px; border-radius: 10px; font-weight: 600; flex-shrink: 0; }
     .card-phone { font-size: 13.5px; color: #d1d7db; font-family: monospace; margin: 3px 0; letter-spacing: 0.3px; }
     .card-status { font-size: 12px; color: #8696a0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
@@ -43,7 +44,7 @@
 
     .main-cta { width: 100%; background: #25d366; color: #111b21; border: none; border-radius: 28px; padding: 16px; font-size: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; margin-top: 6px; box-shadow: 0 4px 18px rgba(37,211,102,0.45); animation: pulseBtn 1.7s infinite; }
 
-    .footer { font-size: 11px; color: #667781; text-align: center; }
+    .footer { font-size: 11px; color: #667781; text-align: center; margin-top: 10px; }
 
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
     @keyframes radarWave { 0% { width: 30px; height: 30px; opacity: 1; } 100% { width: 170px; height: 170px; opacity: 0; } }
@@ -64,55 +65,125 @@
       <div class="radar-sweep"></div>
       <div class="radar-icon">📱</div>
     </div>
-    <div class="scan-title">Жақын маңдағы қыздар ізделуде...</div>
+    <div class="scan-title">Жақын маңдағы қыз-келіншектер ізделуде...</div>
     <div class="scan-sub">Сіздің ауданыңыздағы бос қыз-келіншектердің ашық WhatsApp нөмірлері тексерілуде</div>
   </div>
 
   <!-- Экран 2: Результаты -->
   <div id="resultsScreen">
     <div class="found-header">
-      <div class="found-title">✅ Сіздің ауданда 3 бос қыз табылды!</div>
+      <div class="found-title">✅ Сіздің ауданда 8 бос қыз-келіншек табылды!</div>
       <div class="found-sub">Қазір желіде — танысуға дайын</div>
     </div>
 
-    <!-- Анкета 1 -->
+    <!-- Анкета 1 (28-35) -->
     <div class="card" onclick="goOffer()">
       <div class="card-ava-wrap">
-        <img class="card-ava" id="ava1" src="" alt="Айгерім">
+        <img class="card-ava" id="ava1" src="" alt="Мәдина">
         <div class="card-online"></div>
       </div>
       <div class="card-body">
-        <div class="card-name">Айгерім, 26 <span class="dist-badge">📍 1.2 км</span></div>
+        <div class="card-name"><span>Мәдина, 31 <span class="ru-badge">• Жалайыр</span></span> <span class="dist-badge">📍 1.2 км</span></div>
         <div class="card-phone">📞 +7 (707) ***-**-42</div>
         <div class="card-status">💬 «Жалғыз өзім тұрамын, танысайық...»</div>
       </div>
       <button class="card-btn">Жазу 💬</button>
     </div>
 
-    <!-- Анкета 2 -->
+    <!-- Анкета 2 (28-35) -->
     <div class="card" onclick="goOffer()">
       <div class="card-ava-wrap">
-        <img class="card-ava" id="ava2" src="" alt="Мәдина">
+        <img class="card-ava" id="ava2" src="" alt="Жанар">
         <div class="card-online"></div>
       </div>
       <div class="card-body">
-        <div class="card-name">Мәдина, 31 <span class="dist-badge">📍 2.4 км</span></div>
+        <div class="card-name"><span>Жанар, 28 <span class="ru-badge">• Қыпшақ</span></span> <span class="dist-badge">📍 2.1 км</span></div>
         <div class="card-phone">📞 +7 (775) ***-**-19</div>
         <div class="card-status">🎧 Дауыстық хабарлама жіберді (0:07)</div>
       </div>
       <button class="card-btn">Ашу ▶</button>
     </div>
 
-    <!-- Анкета 3 -->
+    <!-- Анкета 3 (45+ Ауыл) -->
     <div class="card" onclick="goOffer()">
       <div class="card-ava-wrap">
-        <img class="card-ava" id="ava3" src="" alt="Жанар">
+        <img class="card-ava" id="ava3" src="" alt="Гүлшат">
         <div class="card-online"></div>
       </div>
       <div class="card-body">
-        <div class="card-name">Жанар, 28 <span class="dist-badge">📍 3.8 км</span></div>
+        <div class="card-name"><span>Гүлшат, 46 <span class="ru-badge">• Дулат</span></span> <span class="dist-badge">📍 2.8 км</span></div>
         <div class="card-phone">📞 +7 (701) ***-**-85</div>
+        <div class="card-status">💬 «Ауылда тұрамын, шай ішейік...»</div>
+      </div>
+      <button class="card-btn">Жазу 💬</button>
+    </div>
+
+    <!-- Анкета 4 (45+ Ауыл) -->
+    <div class="card" onclick="goOffer()">
+      <div class="card-ava-wrap">
+        <img class="card-ava" id="ava4" src="" alt="Сәуле">
+        <div class="card-online"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-name"><span>Сәуле, 48 <span class="ru-badge">• Арғын</span></span> <span class="dist-badge">📍 3.4 км</span></div>
+        <div class="card-phone">📞 +7 (702) ***-**-61</div>
+        <div class="card-status">💬 «Қарапайым ауыл әйелімін, жаз...»</div>
+      </div>
+      <button class="card-btn">Жазу 💬</button>
+    </div>
+
+    <!-- Анкета 5 (45+ Ауыл) -->
+    <div class="card" onclick="goOffer()">
+      <div class="card-ava-wrap">
+        <img class="card-ava" id="ava5" src="" alt="Айман">
+        <div class="card-online"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-name"><span>Айман, 50 <span class="ru-badge">• Әлімұлы</span></span> <span class="dist-badge">📍 4.0 км</span></div>
+        <div class="card-phone">📞 +7 (777) ***-**-34</div>
+        <div class="card-status">🎧 Дауыстық хабарлама жіберді (0:11)</div>
+      </div>
+      <button class="card-btn">Ашу ▶</button>
+    </div>
+
+    <!-- Анкета 6 (45+ Ауыл) -->
+    <div class="card" onclick="goOffer()">
+      <div class="card-ava-wrap">
+        <img class="card-ava" id="ava6" src="" alt="Роза">
+        <div class="card-online"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-name"><span>Роза, 45 <span class="ru-badge">• Қоңырат</span></span> <span class="dist-badge">📍 4.7 км</span></div>
+        <div class="card-phone">📞 +7 (705) ***-**-90</div>
         <div class="card-status">💬 «Осы ауданнанмын, маған жазшы 😊»</div>
+      </div>
+      <button class="card-btn">Жазу 💬</button>
+    </div>
+
+    <!-- Анкета 7 (45+ Ауыл) -->
+    <div class="card" onclick="goOffer()">
+      <div class="card-ava-wrap">
+        <img class="card-ava" id="ava7" src="" alt="Бақытгүл">
+        <div class="card-online"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-name"><span>Бақытгүл, 49 <span class="ru-badge">• Найман</span></span> <span class="dist-badge">📍 5.3 км</span></div>
+        <div class="card-phone">📞 +7 (708) ***-**-12</div>
+        <div class="card-status">💬 «Сөзіне берік ер азамат іздеймін...»</div>
+      </div>
+      <button class="card-btn">Жазу 💬</button>
+    </div>
+
+    <!-- Анкета 8 (45+ Ауыл) -->
+    <div class="card" onclick="goOffer()">
+      <div class="card-ava-wrap">
+        <img class="card-ava" id="ava8" src="" alt="Күлпаш">
+        <div class="card-online"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-name"><span>Күлпаш, 52 <span class="ru-badge">• Адай</span></span> <span class="dist-badge">📍 6.1 км</span></div>
+        <div class="card-phone">📞 +7 (747) ***-**-77</div>
+        <div class="card-status">💬 «Үй шаруасына пысықпын, сөйлесейік»</div>
       </div>
       <button class="card-btn">Жазу 💬</button>
     </div>
@@ -125,28 +196,31 @@
   <div class="footer">18+ · Құпиялылық сақталады · Қазақстан</div>
 
   <script>
-    // Твоя основная чистая ссылка (куда идут твои переходы без меток)
+    // Негізгі сілтеме
     const DEFAULT_OFFER_URL = "https://dieebjh.adfllows.com/c/77d601875df99"; 
     
-    // Аватарки девушек
-    document.getElementById('ava1').src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80";
-    document.getElementById('ava2').src = "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80";
-    document.getElementById('ava3').src = "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&auto=format&fit=crop&q=80";
+    // Аватаркалар (қазірше уақытша суреттер тұр, кейін өз суреттеріңе ауыстыра аласың)
+    document.getElementById('ava1').src = "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80";
+    document.getElementById('ava2').src = "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&auto=format&fit=crop&q=80";
+    document.getElementById('ava3').src = "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80";
+    document.getElementById('ava4').src = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80";
+    document.getElementById('ava5').src = "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80";
+    document.getElementById('ava6').src = "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=150&auto=format&fit=crop&q=80";
+    document.getElementById('ava7').src = "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=150&auto=format&fit=crop&q=80";
+    document.getElementById('ava8').src = "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=150&auto=format&fit=crop&q=80";
 
-    // Авто-переключение с радара на карточки через 1.8 секунды с легкой вибрацией
+    // 1.8 секундтан кейін радардан анкеталарға өту
     setTimeout(() => {
       document.getElementById('scannerScreen').style.display = 'none';
       document.getElementById('resultsScreen').style.display = 'flex';
       if (navigator.vibrate) navigator.vibrate([70, 50, 70]);
     }, 1800);
 
-    // Умная функция: если зашли по ссылке друга ?sub1=friend, она приклеится к его переходу
     function goOffer() {
-      const currentParams = window.location.search; // ловит всё, что после знака ?
+      const currentParams = window.location.search;
       let targetUrl = DEFAULT_OFFER_URL;
 
       if (currentParams) {
-        // Если в строке есть ?sub1=friend, добавляем это к твоей партнерской ссылке
         targetUrl += (targetUrl.includes('?') ? '&' : '?') + currentParams.substring(1);
       }
 
